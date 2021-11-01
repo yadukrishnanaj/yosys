@@ -1,6 +1,7 @@
 # yosys
 read_verilog orgate.v andgate.v top.v
 hierarchy -check -top top
+# coverting dot to png in windows
 dot -Tpng filename.dot -o filename.png
 proc
 opt
