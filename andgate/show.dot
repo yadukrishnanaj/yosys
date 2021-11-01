@@ -1,0 +1,46 @@
+digraph "top" {
+label="top";
+rankdir="LR";
+remincross=true;
+n2 [ shape=octagon, label="f", color="black", fontcolor="black" ];
+n3 [ shape=octagon, label="e", color="black", fontcolor="black" ];
+n4 [ shape=octagon, label="c", color="black", fontcolor="black" ];
+n5 [ shape=octagon, label="b", color="black", fontcolor="black" ];
+n6 [ shape=octagon, label="a", color="black", fontcolor="black" ];
+c7 [ shape=record, label="{{<p6> a|<p5> b}|or1\norgate|{<p4> c}}" ];
+c8 [ shape=record, label="{{<p6> a|<p5> b}|and1\nandgate|{<p4> c}}" ];
+c7:p4:e -> n2:w [color="black", label=""];
+c8:p4:e -> n3:w [color="black", label=""];
+n3:e -> c7:p6:w [color="black", label=""];
+n4:e -> c7:p5:w [color="black", label=""];
+n5:e -> c8:p5:w [color="black", label=""];
+n6:e -> c8:p6:w [color="black", label=""];
+}
+digraph "andgate" {
+label="andgate";
+rankdir="LR";
+remincross=true;
+n3 [ shape=octagon, label="c", color="black", fontcolor="black" ];
+n4 [ shape=octagon, label="b", color="black", fontcolor="black" ];
+n5 [ shape=octagon, label="a", color="black", fontcolor="black" ];
+c9 [ shape=record, label="{{<p6> A|<p7> B}|$2\n$and|{<p8> Y}}" ];
+x0 [shape=box, style=rounded, label="BUF"];
+c9:p8:e -> x0:w:w [color="black", label=""];
+x0:e:e -> n3:w [color="black", label=""];
+n4:e -> c9:p7:w [color="black", label=""];
+n5:e -> c9:p6:w [color="black", label=""];
+}
+digraph "orgate" {
+label="orgate";
+rankdir="LR";
+remincross=true;
+n3 [ shape=octagon, label="c", color="black", fontcolor="black" ];
+n4 [ shape=octagon, label="b", color="black", fontcolor="black" ];
+n5 [ shape=octagon, label="a", color="black", fontcolor="black" ];
+c9 [ shape=record, label="{{<p6> A|<p7> B}|$1\n$or|{<p8> Y}}" ];
+x0 [shape=box, style=rounded, label="BUF"];
+c9:p8:e -> x0:w:w [color="black", label=""];
+x0:e:e -> n3:w [color="black", label=""];
+n4:e -> c9:p7:w [color="black", label=""];
+n5:e -> c9:p6:w [color="black", label=""];
+}
